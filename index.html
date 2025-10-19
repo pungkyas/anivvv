@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>365 Hari Cinta Mamas & Adek 💞</title>
+  <link rel="icon" type="image/x-icon" href="assets/heart.png">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-image: url('assets/background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+    }
+
+    /* container utama supaya isi selalu di tengah layar */
+    .message-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .message {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+      font-size: 1.3rem;
+      max-width: 85%;
+      line-height: 1.8;
+      padding: 20px 25px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      position: absolute;
+      text-align: center;
+    }
+
+    .message.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .message.exit {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+
+    .final-question {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .final-question.show {
+      display: block;
+      opacity: 1;
+    }
+
+    .valentine-btn {
+      background-color: #ff4f81;
+      color: white;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 35px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 100, 150, 0.4);
+    }
+
+    .valentine-btn:hover {
+      background-color: #ff2f68;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 80, 130, 0.6);
+    }
+
+    .love-particle {
+      position: fixed;
+      font-size: 1.5rem;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      opacity: 0.8;
+      z-index: 999;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+    }
+
+    #loveVideo {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(255, 0, 128, 0.7);
+      z-index: 9999;
+    }
+
+    audio { display: none; }
+
+    /* --- Responsif di HP --- */
+    @media (max-width: 768px) {
+      .message {
+        font-size: 1.05rem;
+        max-width: 90%;
+        padding: 15px 18px;
+        line-height: 1.6;
+      }
+
+      .valentine-btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+      }
+
+      h2 { font-size: 1.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .message {
+        font-size: 0.95rem;
+        padding: 12px 15px;
+      }
+
+      .valentine-btn {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Musik Background -->
+  <audio id="bgMusic" loop>
+    <source src="assets/bg-music.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="message-container">
+    <div class="message">365 hari bersama adek.</div>
+    <div class="message">Satu tahun penuh cerita ada tawa, air mata, pelukan, diam yang saling mengerti, dan perjuangan buat terus bertahan.</div>
+    <div class="message">Siapa sangka ya dek, kita bisa sejauh ini? Dulu cuma saling kenal biasa, tapi pelan-pelan adek jadi rumah buat mamas.</div>
+    <div class="message">Jadi tempat mamas pulang, jadi orang yang paling ngerti, yang bisa nenangin tanpa banyak kata.</div>
+    <div class="message">Selama setahun ini, adek udah ngasih banyak banget hal yang berharga buat mamas hal-hal yang mungkin mamas gak akan pernah bisa balas satu-satu.</div>
+    <div class="message">Kesabaran adek, ketulusan adek, dan usaha adek buat tetap ada… semua itu gak pernah mamas anggap remeh.</div>
+    <div class="message">Mamas tahu, kita gak selalu sempurna. Kadang salah paham, kadang saling bikin kecewa.</div>
+    <div class="message">Tapi hebatnya kita, gak pernah benar-benar ninggalin. Selalu ada yang mau memperbaiki, selalu ada yang mau bertahan.</div>
+    <div class="message">Mamas bersyukur banget, karena dari sekian banyak orang yang bisa datang dan pergi, semesta justru ngasih adek orang yang bikin mamas jatuh cinta setiap hari.</div>
+    <div class="message">Dan mamas cuma berharap, di hari-hari berikutnya, tetap adek yang jadi alasan mamas buat senyum, semangat, dan percaya pada cinta.</div>
+    <div class="message">Terima kasih ya dek, udah nemenin mamas sampai di titik satu tahun ini.</div>
+    <div class="message">Semoga tahun-tahun berikutnya kita masih bareng, saling jaga, saling kuat, dan saling cinta.</div>
+    <div class="message">Mamas sayang banget sama adek.</div>
+    <div class="message">Selamat 365 hari cinta kita, satu tahun penuh rasa dan cerita yang gak akan mamas lupa. ❤️</div>
+
+    <div class="final-question">
+      <h2>💘 Happy 1st Anniversary 💘</h2>
+      <button class="valentine-btn yes-btn">Putar Video Kenangan 💞</button>
+    </div>
+  </div>
+
+  <video id="loveVideo" controls>
+    <source src="assets/WhatsApp Video 2025-10-19 at 14.26.20_641a4f8c.mp4" type="video/mp4">
+  </video>
+
+  <script>
+    function createParticles() {
+      const emojis = ['❤️', '💖', '💞', '💘', '🌸', '💝'];
+      const container = document.body;
+      let lastTime = 0;
+      function animate(timestamp) {
+        if (!lastTime || timestamp - lastTime >= 500) {
+          const particle = document.createElement('div');
+          particle.className = 'love-particle';
+          particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDuration = Math.random() * 3 + 3 + 's';
+          container.appendChild(particle);
+          setTimeout(() => particle.remove(), 6000);
+          lastTime = timestamp;
+        }
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
+
+    let currentMessage = 0;
+    const messages = document.querySelectorAll('.message');
+    const finalQuestion = document.querySelector('.final-question');
+    const video = document.getElementById('loveVideo');
+    const bgMusic = document.getElementById('bgMusic');
+
+    function showNextMessage() {
+      if (currentMessage > 0) messages[currentMessage - 1].classList.add('exit');
+      if (currentMessage < messages.length) {
+        messages[currentMessage].classList.add('active');
+        currentMessage++;
+        setTimeout(showNextMessage, 4500);
+      } else {
+        setTimeout(() => {
+          finalQuestion.classList.add('show');
+        }, 1500);
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      if (bgMusic.paused) {
+        bgMusic.volume = 0.5;
+        bgMusic.play().catch(err => console.log("Autoplay diblokir:", err));
+      }
+      if (e.target.classList.contains('yes-btn')) {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        bgMusic.loop = false;
+        document.querySelector('.message-container').style.display = 'none';
+        video.style.display = 'block';
+        video.play();
+      }
+    });
+
+    createParticles();
+    setTimeout(showNextMessage, 1500);
+  </script>
+</body>
+</html>

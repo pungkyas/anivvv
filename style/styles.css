@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff0080, #7a00ff);
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* Animasi pesan */
+.message {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    position: absolute;
+    font-size: 1.8rem;
+}
+
+.message.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message.exit {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.final-question {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+    position: absolute;
+    text-align: center;
+}
+
+.final-question.show {
+    display: block;
+    opacity: 1;
+}
+
+.valentine-btn {
+    background-color: #ff4f81;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.valentine-btn:hover {
+    background-color: #ff2f68;
+    transform: scale(1.05);
+}
+
+/* Efek partikel emoji */
+.love-particle {
+    position: fixed;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Efek hati pecah */
+.heart-burst {
+    position: fixed;
+    font-size: 2rem;
+    animation: burst 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes burst {
+    from {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Video di tengah */
+#loveVideo {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 640px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 0, 128, 0.7);
+    z-index: 9999;
+}
